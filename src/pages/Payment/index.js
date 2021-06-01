@@ -45,7 +45,7 @@ const Payment = () => {
           text: 'Whoops: o campo nome é obrigátorio!',
         });
       }
-      const response = await api.get(`/campanhas/?nome=${name}`);
+      const response = await api.get(`/campanhas/?name=${name}`);
       console.log(response.data);
       setData(response.data);
       setIsLoading(false);

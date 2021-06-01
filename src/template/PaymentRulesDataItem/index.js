@@ -36,13 +36,13 @@ const PaymentRulesDataItem = ({ data }) => {
                     {item.id}
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {item.nome}
+                    {item.name}
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {item.cliente}
+                    {item.client}
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {item.bandeira}
+                    {item.flag}
                   </TableCell>
                 </TableRow>
               ))}
