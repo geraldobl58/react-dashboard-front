@@ -57,14 +57,6 @@ const Payments = () => {
           <>
             <ContainerButton>
               <ButtonCustom>Nova Regra</ButtonCustom>
-              {/* <Button
-                variant="contained"
-                color="primary"
-                component={Link}
-                to="/payments-form"
-              >
-                Nova Regra
-              </Button> */}
             </ContainerButton>
             <TableContainer component={Paper}>
               <Table>
