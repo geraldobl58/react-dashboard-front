@@ -108,7 +108,7 @@ const Payments = () => {
               variant="contained"
               color="primary"
               component={Link}
-              to="/paymentform"
+              to="/payments-form"
             >
               Nova Regra
             </Button>
