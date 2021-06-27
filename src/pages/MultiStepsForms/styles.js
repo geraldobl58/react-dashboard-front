@@ -14,9 +14,3 @@ export const ContainerMain = styled.main`
 export const ContainerSeparator = styled.div`
   min-height: 64px;
 `;
-
-export const ContainerSteps = styled.div`
-  margin-top: 100px;
-  display: flex;
-  justify-content: flex-end;
-`;

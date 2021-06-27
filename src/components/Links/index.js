@@ -21,7 +21,7 @@ export const Links = (
           <ListItemText primary="Dashboard" />
         </ListItem>
       </Link>
-      <Link to="/payment">
+      <Link to="/payments">
         <ListItem button>
           <ListItemIcon>
             <Payment />
