@@ -22,7 +22,7 @@ import { Links } from '../Links';
 
 import logo from '../../assets/images/logo.svg';
 
-const Appshell = ({ pageTitle }) => {
+const Appshell = ({ children, pageTitle }) => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(true);
@@ -61,6 +61,7 @@ const Appshell = ({ pageTitle }) => {
           >
             {pageTitle}
           </Typography>
+          {children}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -98,5 +99,6 @@ const Appshell = ({ pageTitle }) => {
 export default Appshell;
 
 Appshell.propTypes = {
+  children: PropTypes.node.isRequired,
   pageTitle: PropTypes.string.isRequired,
 };

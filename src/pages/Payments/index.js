@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  Typography,
   CssBaseline,
   Table,
   TableBody,
@@ -20,7 +19,6 @@ import {
   ContainerWrapper,
   ContainerMain,
   ContainerSeparator,
-  ContainerPayments,
   ContainerButton,
 } from './styles';
 
@@ -49,15 +47,18 @@ const Payments = () => {
     <ContainerWrapper>
       <CssBaseline />
 
-      <Appshell pageTitle="Regras de Pagamentos" />
+      <Appshell pageTitle="Regras de Pagamentos">
+        {rules && (
+          <ContainerButton>
+            <ButtonCustom color="secondary">Nova Regra</ButtonCustom>
+          </ContainerButton>
+        )}
+      </Appshell>
 
       <ContainerMain>
         <ContainerSeparator />
-        {rules.length > 0 ? (
+        {rules.length > 0 && (
           <>
-            <ContainerButton>
-              <ButtonCustom color="secondary">Nova Regra</ButtonCustom>
-            </ContainerButton>
             <TableContainer component={Paper}>
               <Table>
                 <TableHead>
@@ -89,16 +90,6 @@ const Payments = () => {
               </Table>
             </TableContainer>
           </>
-        ) : (
-          <ContainerPayments>
-            <Typography variant="h5">
-              Nenhuma regra de pagamento cadastrada.
-            </Typography>
-            <Typography variant="subtitle1">
-              Crie sua primeira regra agora mesmo
-            </Typography>
-            <ButtonCustom color="primary">Nova Regra</ButtonCustom>
-          </ContainerPayments>
         )}
       </ContainerMain>
     </ContainerWrapper>
