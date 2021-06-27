@@ -1,22 +1,18 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ptBR } from '@material-ui/core/locale';
 
-import blue from '@material-ui/core/colors/blue';
-
-import { colors } from '@material-ui/core';
-
 const theme = createMuiTheme(
   {
     palette: {
       primary: {
-        dark: blue[900],
-        main: blue[800],
-        light: blue[300],
+        light: '#64b5f6',
+        main: '#4791db',
+        dark: '#115293',
       },
       secondary: {
-        dark: colors.indigo[500],
-        main: colors.indigo[800],
-        light: colors.indigo[900],
+        light: '#e33371',
+        main: '#dc004e',
+        dark: '#9a0036',
       },
     },
     props: {

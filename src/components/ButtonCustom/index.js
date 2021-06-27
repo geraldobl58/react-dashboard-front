@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 import { Button } from '@material-ui/core';
 
-export default function ButtonCustom({ children }) {
+export default function ButtonCustom({ children, color }) {
   return (
     <Button
       variant="contained"
-      color="primary"
+      color={color}
       component={Link}
       to="/payments-form"
     >
@@ -19,4 +19,5 @@ export default function ButtonCustom({ children }) {
 
 ButtonCustom.propTypes = {
   children: PropTypes.node.isRequired,
+  color: PropTypes.string.isRequired,
 };

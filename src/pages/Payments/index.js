@@ -56,7 +56,7 @@ const Payments = () => {
         {rules.length > 0 ? (
           <>
             <ContainerButton>
-              <ButtonCustom>Nova Regra</ButtonCustom>
+              <ButtonCustom color="secondary">Nova Regra</ButtonCustom>
             </ContainerButton>
             <TableContainer component={Paper}>
               <Table>
@@ -97,7 +97,7 @@ const Payments = () => {
             <Typography variant="subtitle1">
               Crie sua primeira regra agora mesmo
             </Typography>
-            <ButtonCustom>Nova Regra</ButtonCustom>
+            <ButtonCustom color="primary">Nova Regra</ButtonCustom>
           </ContainerPayments>
         )}
       </ContainerMain>
