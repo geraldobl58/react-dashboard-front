@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  Button,
-  CssBaseline,
   Typography,
+  CssBaseline,
   Table,
   TableBody,
   TableCell,
@@ -28,6 +27,7 @@ import {
 import api from '../../services/api';
 
 import { useLoading } from '../../hooks/Loading';
+import ButtonCustom from '../../components/ButtonCustom';
 
 const Payments = () => {
   const [rules, setRules] = useState([]);
@@ -56,14 +56,15 @@ const Payments = () => {
         {rules.length > 0 ? (
           <>
             <ContainerButton>
-              <Button
+              <ButtonCustom>Nova Regra</ButtonCustom>
+              {/* <Button
                 variant="contained"
                 color="primary"
                 component={Link}
                 to="/payments-form"
               >
                 Nova Regra
-              </Button>
+              </Button> */}
             </ContainerButton>
             <TableContainer component={Paper}>
               <Table>
@@ -104,14 +105,7 @@ const Payments = () => {
             <Typography variant="subtitle1">
               Crie sua primeira regra agora mesmo
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              to="/payments-form"
-            >
-              Nova Regra
-            </Button>
+            <ButtonCustom>Nova Regra</ButtonCustom>
           </ContainerPayments>
         )}
       </ContainerMain>
