@@ -137,7 +137,7 @@ const PaymentFormStepOne = () => {
       </ContainerGroup>
       <ContainerButtons>
         <Button
-          variant="contained"
+          variant="outlined"
           color="secondary"
           onClick={handleClickOpen}
           style={{ marginRight: '20px' }}

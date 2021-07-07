@@ -11,7 +11,10 @@ import {
   Paper,
 } from '@material-ui/core';
 
+import { FcGoogle, FcReddit, FcDribbble } from 'react-icons/fc';
+
 export default function TableResults({ data }) {
+  console.log(data);
   return (
     <>
       {data.length > 0 && (
@@ -38,7 +41,9 @@ export default function TableResults({ data }) {
                     {item.cliente}
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {item.bandeira}
+                    {item.bandeira === 1 && <FcGoogle size={30} />}
+                    {item.bandeira === 2 && <FcReddit size={30} />}
+                    {item.bandeira === 3 && <FcDribbble size={30} />}
                   </TableCell>
                 </TableRow>
               ))}
