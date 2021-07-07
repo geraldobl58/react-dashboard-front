@@ -1,7 +1,17 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Typography, TextField, Button } from '@material-ui/core';
+import {
+  Typography,
+  TextField,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Slide,
+} from '@material-ui/core';
 
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -20,7 +30,25 @@ import {
 
 import { useSteps } from '../../hooks/Steps';
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const PaymentFormStepOne = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const backScreen = () => {
+    return (window.location = '/payments');
+  };
+
   const {
     setCurrentStep,
     startDate,
@@ -111,7 +139,7 @@ const PaymentFormStepOne = () => {
         <Button
           variant="contained"
           color="secondary"
-          onClick={console.log('open modal')}
+          onClick={handleClickOpen}
           style={{ marginRight: '20px' }}
         >
           Cancelar Cadastro
@@ -125,6 +153,29 @@ const PaymentFormStepOne = () => {
           Configurar Regras
           <ArrowForwardIcon />
         </Button>
+
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogContent>
+            <DialogContentText>
+              Deseja cancelar está ação e começar novamente?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Não
+            </Button>
+            <Button onClick={backScreen} color="primary">
+              Sim
+            </Button>
+          </DialogActions>
+        </Dialog>
       </ContainerButtons>
     </WrapperContainer>
   );
