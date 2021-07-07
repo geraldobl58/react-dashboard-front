@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const WrapperContainer = styled.div`
+  margin-top: 20px;
+`;
+
 export const ContainerInput = styled.div`
   display: flex;
   margin-right: 10px;
@@ -28,7 +32,9 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const AlertContainer = styled.div`
-  margin-top: 20px;
-  margin-bottom: 20px;
+export const ContainerButtons = styled.div`
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;

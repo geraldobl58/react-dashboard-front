@@ -1,94 +1,58 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React from 'react';
 
-import {
-  CssBaseline,
-  Typography,
-  Button,
-  Stepper,
-  Step,
-  StepLabel,
-} from '@material-ui/core';
+import { CssBaseline, Stepper, Step, StepLabel } from '@material-ui/core';
+
+import CloseIcon from '@material-ui/icons/Close';
 
 import Appshell from '../../components/Appshell';
 
+import PaymentFormStepOne from '../../template/PaymentFormStepOne';
+import PaymentFormStepTwo from '../../template/PaymentFormStepTwo';
+
 import { ContainerWrapper, ContainerMain, ContainerSeparator } from './styles';
 
-import PaymentFormStepOne from '../../template/PaymentFormStepOne';
+import { useSteps } from '../../hooks/Steps';
 
 const MultiStepsForms = () => {
-  function getSteps() {
-    return ['Dados da regra', 'Regras de Catálogo', 'Regras de Frete'];
-  }
+  const { currentStep } = useSteps();
 
-  function getStepContent(stepIndex) {
-    switch (stepIndex) {
-      case 0:
-        return <PaymentFormStepOne />;
+  function showStep(step) {
+    switch (step) {
       case 1:
-        return 'What is an ad group anyways?';
+        return <PaymentFormStepOne />;
       case 2:
+        return <PaymentFormStepTwo />;
+      case 3:
         return 'This is the bit I really care about!';
       default:
         return 'Unknown stepIndex';
     }
   }
 
-  const [activeStep, setActiveStep] = useState(0);
-  const steps = getSteps();
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
   return (
     <ContainerWrapper>
       <CssBaseline />
 
-      <Appshell pageTitle="Criar Nova Regra de Exclusão" />
+      <Appshell pageTitle="Criar Nova Regra de Exclusão">
+        <CloseIcon />
+      </Appshell>
 
       <ContainerMain>
         <ContainerSeparator />
 
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
+        <Stepper activeStep={currentStep - 1} orientation="horizontal">
+          <Step>
+            <StepLabel>Dados da regra</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Regras de Catálogo</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Regras de Frete</StepLabel>
+          </Step>
         </Stepper>
-        <div>
-          {activeStep === steps.length ? (
-            <div>
-              <Typography>All steps completed</Typography>
-              <Button onClick={handleReset}>Reset</Button>
-            </div>
-          ) : (
-            <div>
-              <>{getStepContent(activeStep)}</>
-              <div>
-                <Button disabled={activeStep === 0} onClick={handleBack}>
-                  Back
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                >
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
+        {showStep(currentStep)}
       </ContainerMain>
     </ContainerWrapper>
   );

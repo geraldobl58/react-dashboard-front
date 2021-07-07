@@ -1,35 +1,28 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 
-import {
-  Typography,
-  TextField,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from '@material-ui/core';
+import { Typography, TextField, Button } from '@material-ui/core';
 
 import SearchIcon from '@material-ui/icons/Search';
 
-import Alert from '@material-ui/lab/Alert';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+
+import TableResults from './Table';
 
 import {
+  WrapperContainer,
   ContainerInput,
   ContainerGroup,
   ButtonContainer,
-  AlertContainer,
+  ContainerButtons,
 } from './styles';
 
 import { useSteps } from '../../hooks/Steps';
 
 const PaymentFormStepOne = () => {
   const {
+    setCurrentStep,
     startDate,
     setStartDate,
     endDate,
@@ -41,11 +34,10 @@ const PaymentFormStepOne = () => {
     ruleName,
     setRuleName,
     search,
-    saveRules,
   } = useSteps();
 
   return (
-    <>
+    <WrapperContainer>
       <Typography variant="h5">Cadastrar nova regra</Typography>
       <Typography variant="subtitle1">
         Insira os dados referente a nova regra que deseja criar
@@ -105,61 +97,36 @@ const PaymentFormStepOne = () => {
               color="primary"
               onClick={search}
               disabled={!campaign || !dataSearch}
+              endIcon={<SearchIcon />}
             >
-              Buscar Campanha <SearchIcon />
+              Buscar Campanha
             </Button>
           </ButtonContainer>
         </ContainerGroup>
       </ContainerInput>
-      <AlertContainer>
-        <Alert severity="info">
-          Digite acima os dados que deseja. (Ex.Telha Norte, Portal Web Prêmios)
-        </Alert>
-      </AlertContainer>
       <ContainerGroup>
-        {data.length > 0 && (
-          <TableContainer component={Paper}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Id Campanha</TableCell>
-                  <TableCell>Nome</TableCell>
-                  <TableCell>Cliente</TableCell>
-                  <TableCell>Bandeira</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell component="th" scope="row">
-                      {item.id}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {item.nome}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {item.cliente}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {item.bandeira}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
+        <TableResults data={data} />
       </ContainerGroup>
-      <Button
-        fullWidth
-        variant="contained"
-        color="secondary"
-        onClick={saveRules}
-        disabled={!campaign || !ruleName || !startDate || !endDate}
-      >
-        Salvar
-      </Button>
-    </>
+      <ContainerButtons>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={console.log('open modal')}
+          style={{ marginRight: '20px' }}
+        >
+          Cancelar Cadastro
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setCurrentStep(2)}
+          disabled={!ruleName || !startDate || !endDate || !campaign}
+        >
+          Configurar Regras
+          <ArrowForwardIcon />
+        </Button>
+      </ContainerButtons>
+    </WrapperContainer>
   );
 };
 

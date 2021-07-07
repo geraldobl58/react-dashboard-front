@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 
 import Appshell from '../../components/Appshell';
+import ButtonCustom from '../../components/ButtonCustom';
 
 import {
   ContainerWrapper,
@@ -25,7 +26,6 @@ import {
 import api from '../../services/api';
 
 import { useLoading } from '../../hooks/Loading';
-import ButtonCustom from '../../components/ButtonCustom';
 
 const Payments = () => {
   const [rules, setRules] = useState([]);

@@ -11,6 +11,7 @@ export const MultiStepsContext = createContext();
 MultiStepsContext.displayName = 'MultiStepsContext';
 
 const MultiStepsProvider = ({ children }) => {
+  const [currentStep, setCurrentStep] = useState(1);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
@@ -41,13 +42,6 @@ const MultiStepsProvider = ({ children }) => {
   const search = async () => {
     try {
       setIsLoading(true);
-      if (campaign === '') {
-        setMessageAttrs({
-          show: true,
-          severity: 'warning',
-          text: 'Whoops: o campo nome é obrigátorio!',
-        });
-      }
       const response = await api.get(`/campanhas/`, {
         params: {
           nome: campaign,
@@ -102,6 +96,8 @@ const MultiStepsProvider = ({ children }) => {
   return (
     <MultiStepsContext.Provider
       value={{
+        currentStep,
+        setCurrentStep,
         startDate,
         setStartDate,
         endDate,
