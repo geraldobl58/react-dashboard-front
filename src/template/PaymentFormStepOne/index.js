@@ -123,11 +123,11 @@ const PaymentFormStepOne = () => {
         <Button
           variant="contained"
           color="primary"
+          endIcon={<ArrowForwardIcon />}
           onClick={() => setCurrentStep(2)}
-          disabled={!ruleName || !startDate || !endDate || !campaign}
+          // disabled={!ruleName || !startDate || !endDate || !campaign}
         >
           Configurar Regras
-          <ArrowForwardIcon />
         </Button>
       </ContainerButtons>
     </WrapperContainer>
