@@ -19,4 +19,6 @@ export const WrapperContent = styled.div`
   margin-top: 20px;
 `;
 
-export const ContainerDataTable = styled.div``;
+export const ContainerDataTable = styled.div`
+  margin-top: 50px;
+`;

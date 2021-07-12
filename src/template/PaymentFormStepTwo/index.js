@@ -3,6 +3,8 @@ import React from 'react';
 
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 
+import MUIDataTable from 'mui-datatables';
+
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -20,6 +22,9 @@ import { useSteps } from '../../hooks/Steps';
 import { useModal } from '../../hooks/ModalCustom';
 import { useCatalog } from '../../hooks/Catalog';
 
+import columns from './tableHeadCells';
+import options from '../../utils/muiDataTableDefaultOptions';
+
 export default function PaymentFormStepTwo() {
   const { setCurrentStep } = useSteps();
   const { handleClickOpen } = useModal();
@@ -31,6 +36,13 @@ export default function PaymentFormStepTwo() {
     categories,
     setCategory,
   } = useCatalog();
+
+  const data = [
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+  ];
 
   return (
     <WrapperContainer>
@@ -122,7 +134,9 @@ export default function PaymentFormStepTwo() {
           Configurar regras de frete
         </Button>
       </ContainerButtons>
-      <ContainerDataTable>dassd</ContainerDataTable>
+      <ContainerDataTable>
+        <MUIDataTable data={data} columns={columns} options={options} />
+      </ContainerDataTable>
     </WrapperContainer>
   );
 }
