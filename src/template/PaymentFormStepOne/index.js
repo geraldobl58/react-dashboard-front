@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Alert from '@material-ui/lab/Alert';
 
 import TableResults from './Table';
 
@@ -112,6 +113,9 @@ const PaymentFormStepOne = () => {
       <ContainerGroup>
         <TableResults data={data} />
       </ContainerGroup>
+      <ContainerGroup>
+        <Alert severity="info">Todos os campos são obrigátorios!</Alert>
+      </ContainerGroup>
       <ContainerButtons>
         <Button
           variant="outlined"
@@ -126,7 +130,7 @@ const PaymentFormStepOne = () => {
           color="primary"
           endIcon={<ArrowForwardIcon />}
           onClick={() => setCurrentStep(2)}
-          // disabled={!ruleName || !startDate || !endDate || !campaign}
+          disabled={!ruleName || !startDate || !endDate || !campaign}
         >
           Configurar Regras
         </Button>
