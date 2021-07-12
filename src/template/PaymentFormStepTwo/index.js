@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 
@@ -18,37 +18,19 @@ import {
 
 import { useSteps } from '../../hooks/Steps';
 import { useModal } from '../../hooks/ModalCustom';
-
-import api from '../../services/api';
+import { useCatalog } from '../../hooks/Catalog';
 
 export default function PaymentFormStepTwo() {
-  // const [isToggle, setIsToggle] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
-  const [data, setData] = useState([]);
-
-  const [nameOrSku, setNameOrSku] = useState('');
-  const [brand, setBrand] = useState('');
-  const [category, setCategory] = useState('');
-
   const { setCurrentStep } = useSteps();
   const { handleClickOpen } = useModal();
-
-  useEffect(() => {
-    async function getCategories() {
-      const response = await api.get('/categorias');
-      setCategories(response.data);
-    }
-    getCategories();
-  }, []);
-
-  useEffect(() => {
-    async function getBrands() {
-      const response = await api.get('/marcas');
-      setBrands(response.data);
-    }
-    getBrands();
-  }, []);
+  const {
+    nameOrSku,
+    setNameOrSku,
+    brands,
+    setBrand,
+    categories,
+    setCategory,
+  } = useCatalog();
 
   return (
     <WrapperContainer>
