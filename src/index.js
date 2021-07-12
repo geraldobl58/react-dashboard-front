@@ -6,18 +6,21 @@ import App from './App';
 import LoadingProvider from './hooks/Loading';
 import MessageProvider from './hooks/Messages';
 import MultiStepsProvider from './hooks/Steps';
+import ModalCustomProvider from './hooks/ModalCustom';
 
 import theme from './theme';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <MessageProvider>
-      <LoadingProvider>
-        <MultiStepsProvider>
-          <App />
-        </MultiStepsProvider>
-      </LoadingProvider>
-    </MessageProvider>
+    <ModalCustomProvider>
+      <MessageProvider>
+        <LoadingProvider>
+          <MultiStepsProvider>
+            <App />
+          </MultiStepsProvider>
+        </LoadingProvider>
+      </MessageProvider>
+    </ModalCustomProvider>
   </ThemeProvider>,
   document.getElementById('root')
 );

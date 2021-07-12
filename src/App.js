@@ -2,6 +2,7 @@ import React from 'react';
 
 import Loading from './components/Loading';
 import Messages from './components/Messages';
+import Modal from './components/Modal';
 
 import { useLoading } from './hooks/Loading';
 
@@ -15,6 +16,7 @@ const App = () => {
       <Routes />
       <Loading isLoading={isLoading} />
       <Messages />
+      <Modal />
     </>
   );
 };
