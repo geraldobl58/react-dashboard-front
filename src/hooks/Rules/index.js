@@ -10,7 +10,7 @@ export const RulesContext = createContext();
 
 RulesContext.displayName = 'RulesContext';
 
-const RulesProdiver = ({ children }) => {
+const RulesProvider = ({ children }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
@@ -76,8 +76,8 @@ const useRules = () => useContext(RulesContext);
 
 export { useRules };
 
-export default RulesProdiver;
+export default RulesProvider;
 
-RulesProdiver.propTypes = {
+RulesProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };

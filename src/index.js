@@ -7,7 +7,7 @@ import LoadingProvider from './hooks/Loading';
 import MessageProvider from './hooks/Messages';
 import ModalCustomProvider from './hooks/ModalCustom';
 import MultiStepsProvider from './hooks/Steps';
-import RulesProdiver from './hooks/Rules';
+import RulesProvider from './hooks/Rules';
 
 import theme from './theme';
 
@@ -17,9 +17,9 @@ ReactDOM.render(
       <MessageProvider>
         <LoadingProvider>
           <MultiStepsProvider>
-            <RulesProdiver>
+            <RulesProvider>
               <App />
-            </RulesProdiver>
+            </RulesProvider>
           </MultiStepsProvider>
         </LoadingProvider>
       </MessageProvider>
