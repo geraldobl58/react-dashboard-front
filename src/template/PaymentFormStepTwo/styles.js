@@ -10,3 +10,13 @@ export const ContainerButtons = styled.div`
     margin-right: 20px;
   }
 `;
+
+export const WrapperContainer = styled.div`
+  margin-top: 20px;
+`;
+
+export const WrapperContent = styled.div`
+  margin-top: 20px;
+`;
+
+export const ContainerDataTable = styled.div``;
