@@ -21,10 +21,10 @@ import {
 
 import { useSteps } from '../../hooks/Steps';
 import { useModal } from '../../hooks/ModalCustom';
+import { useRules } from '../../hooks/Rules';
 
 const PaymentFormStepOne = () => {
   const {
-    setCurrentStep,
     startDate,
     setStartDate,
     endDate,
@@ -36,9 +36,10 @@ const PaymentFormStepOne = () => {
     ruleName,
     setRuleName,
     search,
-  } = useSteps();
+  } = useRules();
 
   const { handleClickOpen } = useModal();
+  const { setCurrentStep } = useSteps();
 
   return (
     <WrapperContainer>
