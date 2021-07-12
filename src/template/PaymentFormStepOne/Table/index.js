@@ -14,7 +14,6 @@ import {
 import { FcGoogle, FcReddit, FcDribbble } from 'react-icons/fc';
 
 export default function TableResults({ data }) {
-  console.log(data);
   return (
     <>
       {data.length > 0 && (
