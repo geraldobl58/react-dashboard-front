@@ -130,7 +130,7 @@ const PaymentFormStepOne = () => {
           color="primary"
           endIcon={<ArrowForwardIcon />}
           onClick={() => setCurrentStep(2)}
-          disabled={!ruleName || !startDate || !endDate || !campaign}
+          // disabled={!ruleName || !startDate || !endDate || !campaign}
         >
           Configurar Regras
         </Button>

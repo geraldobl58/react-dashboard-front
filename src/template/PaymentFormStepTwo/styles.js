@@ -22,3 +22,10 @@ export const WrapperContent = styled.div`
 export const ContainerDataTable = styled.div`
   margin-top: 50px;
 `;
+
+export const DataTableEmpty = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

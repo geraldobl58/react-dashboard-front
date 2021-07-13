@@ -16,6 +16,7 @@ import {
   WrapperContent,
   ContainerButtons,
   ContainerDataTable,
+  DataTableEmpty,
 } from './styles';
 
 import { useSteps } from '../../hooks/Steps';
@@ -33,16 +34,11 @@ export default function PaymentFormStepTwo() {
     setNameOrSku,
     brands,
     setBrand,
+    dataSearchCatalog,
     categories,
     setCategory,
+    search,
   } = useCatalog();
-
-  const data = [
-    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
-    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
-    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
-    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
-  ];
 
   return (
     <WrapperContainer>
@@ -103,8 +99,8 @@ export default function PaymentFormStepTwo() {
               fullWidth
               variant="contained"
               color="primary"
-              // onClick={search}
-              // disabled={!nameOrSku || !brands}
+              onClick={search}
+              disabled={!nameOrSku}
               endIcon={<SearchIcon />}
               style={{ height: '55px' }}
             >
@@ -135,7 +131,21 @@ export default function PaymentFormStepTwo() {
         </Button>
       </ContainerButtons>
       <ContainerDataTable>
-        <MUIDataTable data={data} columns={columns} options={options} />
+        {dataSearchCatalog.length === 0 ? (
+          <DataTableEmpty>
+            <Typography variant="h6">Visualização indisponível </Typography>
+            <Typography variant="caption">
+              Para visualizar a regra do catálogo de produtos, realize uma busca
+              por SKU, preço, marca ou categoria
+            </Typography>
+          </DataTableEmpty>
+        ) : (
+          <MUIDataTable
+            data={dataSearchCatalog}
+            columns={columns}
+            options={options}
+          />
+        )}
       </ContainerDataTable>
     </WrapperContainer>
   );
