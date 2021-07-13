@@ -44,7 +44,7 @@ const CatalogProvider = ({ children }) => {
       setIsLoading(true);
       const response = await api.get(`/produtos/`, {
         params: {
-          nome: nameOrSku,
+          nomeProduto: nameOrSku,
         },
       });
       setDataSearchCatalog(response.data);

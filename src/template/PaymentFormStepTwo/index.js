@@ -61,8 +61,8 @@ export default function PaymentFormStepTwo() {
           <Grid item xs={12} md={6}>
             <Autocomplete
               options={brands}
-              getOptionLabel={(item) => item.nome}
-              onChange={(event, value) => setBrand(value?.nome)}
+              getOptionLabel={(item) => item.nomeMarca}
+              onChange={(event, value) => setBrand(value?.nomeMarca)}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -77,8 +77,8 @@ export default function PaymentFormStepTwo() {
           <Grid item xs={12} md={3}>
             <Autocomplete
               options={categories}
-              getOptionLabel={(item) => item.Nome}
-              onChange={(event, value) => setCategory(value?.Nome)}
+              getOptionLabel={(item) => item.nomeCategoria}
+              onChange={(event, value) => setCategory(value?.nomeCategoria)}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -100,7 +100,7 @@ export default function PaymentFormStepTwo() {
               variant="contained"
               color="primary"
               onClick={search}
-              disabled={!nameOrSku}
+              // disabled={!nameOrSku}
               endIcon={<SearchIcon />}
               style={{ height: '55px' }}
             >

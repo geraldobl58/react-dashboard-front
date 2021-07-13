@@ -8,7 +8,7 @@ const columns = [
     },
   },
   {
-    name: 'nome',
+    name: 'nomeProduto',
     label: 'Produto',
     options: {
       filter: false,
