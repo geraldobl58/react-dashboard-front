@@ -30,13 +30,14 @@ export default function PaymentFormStepTwo() {
   const { setCurrentStep } = useSteps();
   const { handleClickOpen } = useModal();
   const {
-    products,
     nameOrSku,
     setNameOrSku,
     setBrand,
     dataSearchCatalog,
     setCategory,
     search,
+    categories,
+    brands,
   } = useCatalog();
 
   return (
@@ -59,7 +60,7 @@ export default function PaymentFormStepTwo() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Autocomplete
-              options={products}
+              options={brands}
               getOptionLabel={(item) => item.nomeMarca}
               onChange={(event, value) => setBrand(value?.nomeMarca)}
               renderInput={(params) => (
@@ -75,7 +76,7 @@ export default function PaymentFormStepTwo() {
         <Grid container spacing={4}>
           <Grid item xs={12} md={3}>
             <Autocomplete
-              options={products}
+              options={categories}
               getOptionLabel={(item) => item.nomeCategoria}
               onChange={(event, value) => setCategory(value?.nomeCategoria)}
               renderInput={(params) => (

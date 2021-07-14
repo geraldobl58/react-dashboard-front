@@ -12,8 +12,9 @@ CatalogContext.displayName = 'CatalogContext';
 
 const CatalogProvider = ({ children }) => {
   // const [isToggle, setIsToggle] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [dataSearchCatalog, setDataSearchCatalog] = useState([]);
-  const [products, setProducts] = useState([]);
 
   const [nameOrSku, setNameOrSku] = useState('');
   const [brand, setBrand] = useState('');
@@ -23,12 +24,19 @@ const CatalogProvider = ({ children }) => {
   const { setMessageAttrs } = useMessages();
 
   useEffect(() => {
-    async function getProducts() {
-      const response = await api.get('/produtos');
-      console.log(response.data);
-      setProducts(response.data);
+    async function getCategories() {
+      const response = await api.get('/categorias');
+      setCategories(response.data);
     }
-    getProducts();
+    getCategories();
+  }, []);
+
+  useEffect(() => {
+    async function getBrands() {
+      const response = await api.get('/marcas');
+      setBrands(response.data);
+    }
+    getBrands();
   }, []);
 
   const search = async () => {
@@ -37,8 +45,8 @@ const CatalogProvider = ({ children }) => {
       const response = await api.get(`/produtos/`, {
         params: {
           nomeProduto: nameOrSku,
-          nomeMarca: brand,
-          nomeCategoria: category,
+          // nomeMarca: brand,
+          // nomeCategoria: category,
         },
       });
       setDataSearchCatalog(response.data);
@@ -55,7 +63,10 @@ const CatalogProvider = ({ children }) => {
   return (
     <CatalogContext.Provider
       value={{
-        products,
+        categories,
+        setCategories,
+        brands,
+        setBrands,
         dataSearchCatalog,
         setDataSearchCatalog,
         nameOrSku,
