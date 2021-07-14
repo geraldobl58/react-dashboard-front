@@ -79,8 +79,20 @@ const Payments = () => {
                       <TableCell>{item.nome}</TableCell>
                       <TableCell>{item.campanha}</TableCell>
                       <TableCell>{item?.bandeira || 'Default'}</TableCell>
-                      <TableCell>{item.data_inicio}</TableCell>
-                      <TableCell>{item.data_fim}</TableCell>
+                      <TableCell>
+                        {new Intl.DateTimeFormat('pt-BR', {
+                          day: 'numeric',
+                          month: 'numeric',
+                          year: 'numeric',
+                        }).format(new Date(item.data_inicio))}
+                      </TableCell>
+                      <TableCell>
+                        {new Intl.DateTimeFormat('pt-BR', {
+                          day: 'numeric',
+                          month: 'numeric',
+                          year: 'numeric',
+                        }).format(new Date(item.data_fim))}
+                      </TableCell>
                       <TableCell>
                         <Link to="/payments-form">ver detalhes</Link>
                       </TableCell>
