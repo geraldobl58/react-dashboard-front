@@ -38,6 +38,10 @@ export default function PaymentFormStepTwo() {
     search,
     categories,
     brands,
+    priceInitial,
+    setPriceInitial,
+    priceFinal,
+    setPriceFinal,
   } = useCatalog();
 
   return (
@@ -89,10 +93,20 @@ export default function PaymentFormStepTwo() {
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <TextField label="Valor de R$" variant="outlined" />
+            <TextField
+              label="Valor de R$"
+              variant="outlined"
+              value={priceInitial}
+              onChange={(e) => setPriceInitial(e.target.value)}
+            />
           </Grid>
           <Grid item xs={12} md={3}>
-            <TextField label="Valor até R$" variant="outlined" />
+            <TextField
+              label="Valor até R$"
+              variant="outlined"
+              value={priceFinal}
+              onChange={(e) => setPriceFinal(e.target.value)}
+            />
           </Grid>
           <Grid item xs={12} md={3}>
             <Button

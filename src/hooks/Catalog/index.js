@@ -15,10 +15,13 @@ const CatalogProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [dataSearchCatalog, setDataSearchCatalog] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const [nameOrSku, setNameOrSku] = useState('');
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
+  const [priceInitial, setPriceInitial] = useState('');
+  const [priceFinal, setPriceFinal] = useState('');
 
   const { setIsLoading } = useLoading();
   const { setMessageAttrs } = useMessages();
@@ -39,14 +42,23 @@ const CatalogProvider = ({ children }) => {
     getBrands();
   }, []);
 
+  useEffect(() => {
+    async function getProducts() {
+      const response = await api.get('/produtos');
+      console.log(response.data);
+      setProducts(response.data);
+    }
+    getProducts();
+  }, []);
+
   const search = async () => {
     try {
       setIsLoading(true);
       const response = await api.get(`/produtos/`, {
         params: {
           nomeProduto: nameOrSku,
-          // nomeMarca: brand,
-          // nomeCategoria: category,
+          precoVendaInicial: priceInitial,
+          precoVendaFinal: priceFinal,
         },
       });
       setDataSearchCatalog(response.data);
@@ -76,6 +88,10 @@ const CatalogProvider = ({ children }) => {
         category,
         setCategory,
         search,
+        priceInitial,
+        setPriceInitial,
+        priceFinal,
+        setPriceFinal,
       }}
     >
       {children}

@@ -31,20 +31,34 @@ const columns = [
   //     sort: true,
   //   },
   // },
-  // {
-  //   name: 'precoVenda',
-  //   label: 'Preço',
-  //   options: {
-  //     filter: false,
-  //     sort: true,
-  //     customBodyRender: (value) => {
-  //       return new Intl.NumberFormat('pt-BR', {
-  //         style: 'currency',
-  //         currency: 'BRL',
-  //       }).format(value);
-  //     },
-  //   },
-  // },
+  {
+    name: 'precoVendaInicial',
+    label: 'Preço Inicial',
+    options: {
+      filter: false,
+      sort: true,
+      customBodyRender: (value) => {
+        return new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(value);
+      },
+    },
+  },
+  {
+    name: 'precoVendaFinal',
+    label: 'Preço Final',
+    options: {
+      filter: false,
+      sort: true,
+      customBodyRender: (value) => {
+        return new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(value);
+      },
+    },
+  },
 ];
 
 export default columns;
