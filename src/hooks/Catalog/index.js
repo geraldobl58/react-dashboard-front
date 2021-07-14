@@ -61,7 +61,16 @@ const CatalogProvider = ({ children }) => {
           precoVendaFinal: priceFinal,
         },
       });
-      setDataSearchCatalog(response.data);
+      if (response.data.length > 0) {
+        setDataSearchCatalog(response.data);
+      } else {
+        setMessageAttrs({
+          show: true,
+          severity: 'error',
+          text: 'Whoops: Os filtros não estão corretos, tente novamente!',
+        });
+      }
+
       setIsLoading(false);
     } catch (error) {
       setMessageAttrs({
