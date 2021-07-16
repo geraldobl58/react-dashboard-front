@@ -3,8 +3,6 @@ import React from 'react';
 
 import { CssBaseline, Stepper, Step, StepLabel } from '@material-ui/core';
 
-import CloseIcon from '@material-ui/icons/Close';
-
 import Appshell from '../../components/Appshell';
 
 import PaymentFormStepOne from '../../template/PaymentFormStepOne';
@@ -34,9 +32,7 @@ const MultiStepsForms = () => {
     <ContainerWrapper>
       <CssBaseline />
 
-      <Appshell pageTitle="Criar Nova Regra de Exclusão">
-        <CloseIcon />
-      </Appshell>
+      <Appshell>Criar Nova Regra de Exclusão</Appshell>
 
       <ContainerMain>
         <ContainerSeparator />

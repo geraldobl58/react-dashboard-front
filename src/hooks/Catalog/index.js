@@ -26,21 +26,21 @@ const CatalogProvider = ({ children }) => {
   const { setIsLoading } = useLoading();
   const { setMessageAttrs } = useMessages();
 
-  useEffect(() => {
-    async function getCategories() {
-      const response = await api.get('/categorias');
-      setCategories(response.data);
-    }
-    getCategories();
-  }, []);
+  // useEffect(() => {
+  //   async function getCategories() {
+  //     const response = await api.get('/categorias');
+  //     setCategories(response.data);
+  //   }
+  //   getCategories();
+  // }, []);
 
-  useEffect(() => {
-    async function getBrands() {
-      const response = await api.get('/marcas');
-      setBrands(response.data);
-    }
-    getBrands();
-  }, []);
+  // useEffect(() => {
+  //   async function getBrands() {
+  //     const response = await api.get('/marcas');
+  //     setBrands(response.data);
+  //   }
+  //   getBrands();
+  // }, []);
 
   useEffect(() => {
     async function getProducts() {

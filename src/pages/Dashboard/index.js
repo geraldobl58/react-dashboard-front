@@ -11,7 +11,7 @@ const Dashboard = () => {
     <ContainerWrapper>
       <CssBaseline />
 
-      <Appshell pageTitle="Dashboard" />
+      <Appshell>Dashboard</Appshell>
       <ContainerMain>
         <ContainerSeparator />
         <h1>Dashboard</h1>

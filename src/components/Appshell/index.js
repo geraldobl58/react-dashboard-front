@@ -22,7 +22,7 @@ import { Links } from '../Links';
 
 import logo from '../../assets/images/logo.svg';
 
-const Appshell = ({ children, pageTitle }) => {
+const Appshell = ({ children }) => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(true);
@@ -59,9 +59,8 @@ const Appshell = ({ children, pageTitle }) => {
             noWrap
             className={classes.title}
           >
-            {pageTitle}
+            {children}
           </Typography>
-          {children}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -100,5 +99,4 @@ export default Appshell;
 
 Appshell.propTypes = {
   children: PropTypes.node.isRequired,
-  pageTitle: PropTypes.string.isRequired,
 };

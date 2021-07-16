@@ -1,17 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
-import {
-  CssBaseline,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from '@material-ui/core';
+import { CssBaseline } from '@material-ui/core';
 
 import Appshell from '../../components/Appshell';
 import ButtonCustom from '../../components/ButtonCustom';
@@ -21,13 +11,14 @@ import {
   ContainerMain,
   ContainerSeparator,
   ContainerButton,
+  ContainerHeader,
 } from './styles';
 
 import api from '../../services/api';
 
 import { useLoading } from '../../hooks/Loading';
 
-import dateFormatted from '../../utils/dateFormatted';
+import TableResults from './Table';
 
 const Payments = () => {
   const [rules, setRules] = useState([]);
@@ -49,50 +40,20 @@ const Payments = () => {
     <ContainerWrapper>
       <CssBaseline />
 
-      <Appshell pageTitle="Regras de Pagamentos">
-        {rules && (
-          <ContainerButton>
-            <ButtonCustom color="secondary">Nova Regra</ButtonCustom>
-          </ContainerButton>
-        )}
+      <Appshell>
+        <ContainerHeader>
+          Regras de Pagamentos
+          {rules && (
+            <ContainerButton>
+              <ButtonCustom color="secondary">Nova Regra</ButtonCustom>
+            </ContainerButton>
+          )}
+        </ContainerHeader>
       </Appshell>
 
       <ContainerMain>
         <ContainerSeparator />
-        {rules.length > 0 && (
-          <>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Staus</TableCell>
-                    <TableCell>Nome da regra</TableCell>
-                    <TableCell>Parceiro</TableCell>
-                    <TableCell>Bandeira</TableCell>
-                    <TableCell>Data Inicio</TableCell>
-                    <TableCell>Data Fim</TableCell>
-                    <TableCell>Detalhes</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rules.map((item) => (
-                    <TableRow key={item._id}>
-                      <TableCell>{item?.status || 'Aguardando'}</TableCell>
-                      <TableCell>{item.nome}</TableCell>
-                      <TableCell>{item.campanha}</TableCell>
-                      <TableCell>{item?.bandeira || 'Default'}</TableCell>
-                      <TableCell>{dateFormatted(item.data_inicio)}</TableCell>
-                      <TableCell>{dateFormatted(item.data_fim)}</TableCell>
-                      <TableCell>
-                        <Link to="/payments-form">ver detalhes</Link>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </>
-        )}
+        <TableResults rules={rules} />
       </ContainerMain>
     </ContainerWrapper>
   );
