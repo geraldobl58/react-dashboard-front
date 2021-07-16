@@ -27,6 +27,8 @@ import api from '../../services/api';
 
 import { useLoading } from '../../hooks/Loading';
 
+import dateFormatted from '../../utils/dateFormatted';
+
 const Payments = () => {
   const [rules, setRules] = useState([]);
 
@@ -79,8 +81,8 @@ const Payments = () => {
                       <TableCell>{item.nome}</TableCell>
                       <TableCell>{item.campanha}</TableCell>
                       <TableCell>{item?.bandeira || 'Default'}</TableCell>
-                      <TableCell>{item.data_inicio}</TableCell>
-                      <TableCell>{item.data_fim}</TableCell>
+                      <TableCell>{dateFormatted(item.data_inicio)}</TableCell>
+                      <TableCell>{dateFormatted(item.data_fim)}</TableCell>
                       <TableCell>
                         <Link to="/payments-form">ver detalhes</Link>
                       </TableCell>
