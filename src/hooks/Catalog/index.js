@@ -12,15 +12,35 @@ CatalogContext.displayName = 'CatalogContext';
 
 const CatalogProvider = ({ children }) => {
   // const [isToggle, setIsToggle] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [dataSearchCatalog, setDataSearchCatalog] = useState([]);
   const [products, setProducts] = useState([]);
 
   const [nameOrSku, setNameOrSku] = useState('');
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
+  const [priceInitial, setPriceInitial] = useState('');
+  const [priceFinal, setPriceFinal] = useState('');
 
   const { setIsLoading } = useLoading();
   const { setMessageAttrs } = useMessages();
+
+  useEffect(() => {
+    async function getCategories() {
+      const response = await api.get('/categorias');
+      setCategories(response.data);
+    }
+    getCategories();
+  }, []);
+
+  useEffect(() => {
+    async function getBrands() {
+      const response = await api.get('/marcas');
+      setBrands(response.data);
+    }
+    getBrands();
+  }, []);
 
   useEffect(() => {
     async function getProducts() {
@@ -37,11 +57,20 @@ const CatalogProvider = ({ children }) => {
       const response = await api.get(`/produtos/`, {
         params: {
           nomeProduto: nameOrSku,
-          nomeMarca: brand,
-          nomeCategoria: category,
+          precoVendaInicial: priceInitial,
+          precoVendaFinal: priceFinal,
         },
       });
-      setDataSearchCatalog(response.data);
+      if (response.data.length > 0) {
+        setDataSearchCatalog(response.data);
+      } else {
+        setMessageAttrs({
+          show: true,
+          severity: 'error',
+          text: 'Whoops: Os filtros não estão corretos, tente novamente!',
+        });
+      }
+
       setIsLoading(false);
     } catch (error) {
       setMessageAttrs({
@@ -55,7 +84,10 @@ const CatalogProvider = ({ children }) => {
   return (
     <CatalogContext.Provider
       value={{
-        products,
+        categories,
+        setCategories,
+        brands,
+        setBrands,
         dataSearchCatalog,
         setDataSearchCatalog,
         nameOrSku,
@@ -65,6 +97,10 @@ const CatalogProvider = ({ children }) => {
         category,
         setCategory,
         search,
+        priceInitial,
+        setPriceInitial,
+        priceFinal,
+        setPriceFinal,
       }}
     >
       {children}
