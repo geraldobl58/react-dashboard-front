@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CssBaseline, Grid, Typography } from '@material-ui/core';
+import { CssBaseline, Grid } from '@material-ui/core';
 
 import Appshell from '../../components/Appshell';
 import ChartRules from './ChartRules';
